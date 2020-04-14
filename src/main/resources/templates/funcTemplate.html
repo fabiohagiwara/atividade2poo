@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionarios</title>
+</head>
+<body>
+    <style>
+        table, th, td {
+        border: 1px solid black;
+        }
+    </style>
+    <h1>Cadastrar funcionário</h1>
+    <form th:action="@{/save}" method="POST">
+        <input type="text" name="name" placeholder="Nome"/>
+        <input type="text" name="salario" placeholder="Salario"/>
+        <input type="text" name="departamento" placeholder="Departamento"/>
+        <input type="text" name="cpf"  placeholder="CPF"/>
+        <input type="submit" value="Save"/>
+    </form>
+    <h1>Tabela de funcionários cadastrados</h1>
+    <table>
+        <tr>
+            <th>ID funcionario</th>
+            <th>Nome</th>
+            <th>Salario</th>
+            <th>Departamento</th>
+            <th>CPF</th>
+        </tr>
+        <tr th:each="funcionario : ${funcs}">
+            <td th:text="${funcionario.regCod}"></td>
+            <td th:text="${funcionario.name}"></td>
+            <td th:text="${funcionario.salario}"></td>
+            <td th:text="${funcionario.departamento}"></td>
+            <td th:text="${funcionario.cpf}"></td>
+        </tr>
+    </table>
+
+
+</body>
+</html>
